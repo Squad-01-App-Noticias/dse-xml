@@ -1,7 +1,6 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    id("com.google.gms.google-services")
     id("maven-publish")
 }
 
@@ -10,11 +9,8 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.dse_xml_lib"
         minSdk = 26
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -28,13 +24,16 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
+    
     publishing {
         singleVariant("release")
     }
@@ -45,6 +44,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -59,13 +59,13 @@ dependencies {
 
     implementation("io.coil-kt:coil:2.5.0")
 }
+
 publishing {
     publications {
-        create<MavenPublication>("release") {
+        register<MavenPublication>("release") {
 
             groupId = "com.github.Squad-01-App-Noticias"
             artifactId = "dse-xml"
-            version = "v1.0.1"
 
             afterEvaluate {
                 from(components["release"])
