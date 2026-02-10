@@ -25,3 +25,30 @@ dependencyResolutionManagement {
         maven { url = uri("[https://jitpack.io](https://jitpack.io)") } // Adicione esta linha
     }
 }
+```
+
+### 2. Adicione a dependência
+
+No arquivo build.gradle.kts do seu módulo app, adicione a seguinte linha nas dependências:
+```kotlin
+dependencies {
+    implementation("com.github.Squad-01-App-Noticias:dse-xml:v1.0.2")
+}
+```
+
+> ⚠️ Importante: Sempre verifique a versão mais recente diretamente no JitPack.
+> https://jitpack.io/#Squad-01-App-Noticias/dse-xml
+
+### 3. Sincronize o projeto
+
+Após as alterações, clique em "Sync Now" no Android Studio ou execute o comando abaixo no terminal:
+
+```kotlin
+./gradlew build
+```
+---
+
+### Tecnologias Utilizadas
+* Linguagem: XML e Kotlin
+* Build System: Gradle (Kotlin DSL)
+* Distribuição: https://jitpack.io/
