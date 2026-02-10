@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "dse-xml"
 include(":app")
 include(":dse-xml")
+include(":dse-xml-lib")
