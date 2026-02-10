@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("com.google.gms.google-services")
+    id("maven-publish")
 }
 
 android {
@@ -34,6 +35,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    publishing {
+        singleVariant("release")
+    }
 }
 
 dependencies {
@@ -54,4 +58,18 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
 
     implementation("io.coil-kt:coil:2.5.0")
+}
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+
+            groupId = "com.github.Squad-01-App-Noticias"
+            artifactId = "dse-xml"
+            version = "v1.0.1"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
 }
