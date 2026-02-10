@@ -65,7 +65,7 @@ publishing {
 
             groupId = "com.github.Squad-01-App-Noticias"
             artifactId = "dse-xml"
-            version = "v1.0.0"
+            version = "v1.0.1"
 
             afterEvaluate {
                 from(components["release"])
