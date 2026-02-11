@@ -6,6 +6,7 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import com.example.dse_xml_lib.R
 
 class ActionButtonsView(context: Context) : LinearLayout(context) {
 
@@ -18,7 +19,7 @@ class ActionButtonsView(context: Context) : LinearLayout(context) {
 
         favoriteButton = ImageButton(context).apply {
             // Ícone de coração (favorito)
-            setImageResource(android.R.drawable.btn_star_big_off)
+            setImageResource(R.drawable.ic_favorite_off)
             background = null
             contentDescription = "Favoritar notícia"
             setPadding(dpToPx(12), dpToPx(12), dpToPx(12), dpToPx(12))
@@ -26,7 +27,7 @@ class ActionButtonsView(context: Context) : LinearLayout(context) {
 
         shareButton = ImageButton(context).apply {
             // Ícone de compartilhar
-            setImageResource(android.R.drawable.ic_menu_share)
+            setImageResource(R.drawable.ic_share)
             background = null
             contentDescription = "Compartilhar notícia"
             setPadding(dpToPx(12), dpToPx(12), dpToPx(12), dpToPx(12))
