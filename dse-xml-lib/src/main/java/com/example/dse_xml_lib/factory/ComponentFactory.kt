@@ -54,7 +54,7 @@ object ComponentFactory {
             }
 
             text = props["description"] ?: ""
-            contentDescription = props["accessibility_text"] ?: ""
+            // Não setar contentDescription aqui - será setado dinamicamente na Activity
 
             isFocusable = true
             isFocusableInTouchMode = false
