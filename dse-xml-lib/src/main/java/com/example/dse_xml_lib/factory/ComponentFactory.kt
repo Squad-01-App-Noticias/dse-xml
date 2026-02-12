@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import coil.load
 import com.example.dse_xml_lib.model.ComponentResponse
+import com.example.dse_xml_lib.view.ActionButtonsView
 import com.example.dse_xml_lib.view.DividerView
 import com.example.dse_xml_lib.view.UnsupportedComponentView
 
@@ -25,6 +26,7 @@ object ComponentFactory {
             "TEXT" -> createText(context, component.props)
             "IMAGE" -> createImage(context, component.props)
             "DIVIDER" -> createDivider(context, component.props)
+            "ACTION_BUTTONS" -> createActionButtons(context, component.props)
             else -> UnsupportedComponentView(context)
         }
     }
@@ -34,7 +36,6 @@ object ComponentFactory {
         props: Map<String, String>
     ): View {
         return TextView(context).apply {
-            // Layout params com margins
             val marginTop = props["margin_top"]?.toIntOrNull() ?: 0
             val marginBottom = props["margin_bottom"]?.toIntOrNull() ?: 0
             val marginLeft = props["margin_left"]?.toIntOrNull() ?: 0
@@ -149,6 +150,30 @@ object ComponentFactory {
 
             val color = props["color"]?.let { parseColor(it) } ?: Color.LTGRAY
             setBackgroundColor(color)
+        }
+    }
+
+    private fun createActionButtons(
+        context: Context,
+        props: Map<String, String>
+    ): View {
+        return ActionButtonsView(context).apply {
+            val marginTop = props["margin_top"]?.toIntOrNull() ?: 0
+            val marginBottom = props["margin_bottom"]?.toIntOrNull() ?: 0
+            val marginLeft = props["margin_left"]?.toIntOrNull() ?: 0
+            val marginRight = props["margin_right"]?.toIntOrNull() ?: 0
+
+            layoutParams = ViewGroup.MarginLayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            ).apply {
+                setMargins(
+                    dpToPx(context, marginLeft),
+                    dpToPx(context, marginTop),
+                    dpToPx(context, marginRight),
+                    dpToPx(context, marginBottom)
+                )
+            }
         }
     }
 
