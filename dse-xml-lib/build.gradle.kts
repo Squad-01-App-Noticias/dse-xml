@@ -58,6 +58,11 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
 
     implementation("io.coil-kt:coil:2.5.0")
+
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.robolectric:robolectric:4.11")
+    testImplementation("androidx.test:core:1.5.0")
+
 }
 
 publishing {
