@@ -7,5 +7,6 @@ data class NewsArticle(
     val date: String = "",
     val author: String = "",
     val content: String = "",
-    val summary: String = ""
+    val summary: String = "",
+    val isRead: Boolean = false
 )
