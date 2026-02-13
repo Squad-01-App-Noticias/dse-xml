@@ -4,6 +4,8 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.google.gson.Gson
 import com.example.dse_xml_lib.model.ScreenResponse
+import com.google.firebase.Firebase
+import com.google.firebase.remoteconfig.remoteConfig
 import kotlinx.coroutines.tasks.await
 
 class RemoteConfigManager {
@@ -61,4 +63,21 @@ class RemoteConfigManager {
             null
         }
     }
+
+    fun getFavoritesScreenConfig(): ScreenResponse? {
+
+        return try {
+
+            val jsonString = remoteConfig.getString("favorites_screen")
+
+            gson.fromJson(jsonString, ScreenResponse::class.java)
+
+        } catch (e: Exception) {
+
+            null
+
+        }
+
+    }
+
 }
