@@ -54,7 +54,11 @@ object ComponentFactory {
             }
 
             text = props["description"] ?: ""
-            contentDescription = props["accessibility_text"] ?: ""
+            // Não setar contentDescription aqui - será setado dinamicamente na Activity
+
+            isFocusable = true
+            isFocusableInTouchMode = false
+            importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_YES
 
             gravity = when (props["gravity"]) {
                 "START" -> Gravity.START
@@ -105,6 +109,11 @@ object ComponentFactory {
             }
 
             contentDescription = props["accessibility_text"] ?: ""
+
+            isFocusable = true
+            isFocusableInTouchMode = false
+            importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_YES
+
             adjustViewBounds = true
 
             scaleType = when (props["scale_type"]) {
@@ -150,6 +159,8 @@ object ComponentFactory {
 
             val color = props["color"]?.let { parseColor(it) } ?: Color.LTGRAY
             setBackgroundColor(color)
+
+            importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
         }
     }
 
@@ -177,7 +188,6 @@ object ComponentFactory {
         }
     }
 
-    // Helpers
     private fun dpToPx(context: Context, dp: Int): Int {
         return TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,
